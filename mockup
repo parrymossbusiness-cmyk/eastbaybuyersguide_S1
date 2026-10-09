@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>2027 East Bay Homebuyer Market Guide | Otis White Jr.</title>
+  <meta name="description" content="Interactive 2027 East Bay regional homebuyer field guide, market stats, and video tours covering Solano, Contra Costa, and Alameda counties.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brandNavy: '#0c1a2e',
+            brandDark: '#08101d',
+            brandGold: '#e5a93c',
+            brandSlate: '#1e293b',
+            bayBlue: '#1e3a5f',
+            solanoTeal: '#2b5876',
+            contraGreen: '#405943',
+            alamedaTan: '#6c5b3b'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    .city-pin { cursor: pointer; transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1); }
+    .city-pin:hover, .city-pin.active { transform: scale(1.35); filter: drop-shadow(0px 0px 8px #e5a93c); }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="bg-brandDark text-slate-100 font-sans antialiased selection:bg-brandGold selection:text-brandDark">
+
+  <!-- TOP COMPLIANCE BAR -->
+  <header class="w-full bg-brandNavy/90 border-b border-slate-800 text-xs py-2 px-4 flex justify-between items-center text-slate-400">
+    <div>Otis White | REALTOR® | DRE #02134236 | eXp Realty of California, Inc.</div>
+    <div class="hidden sm:block text-brandGold font-semibold">2027 East Bay Regional Field Guide</div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="max-w-7xl mx-auto px-4 pt-10 pb-6 text-center">
+    <div class="inline-block bg-brandGold/10 border border-brandGold/30 text-brandGold text-xs uppercase tracking-widest font-bold px-3 py-1 rounded-full mb-4">
+      Micro-Market Intelligence & Video Field Tours
+    </div>
+    <h1 class="text-3xl sm:text-5xl font-black tracking-tight text-white max-w-4xl mx-auto">
+      Explore the East Bay Homebuyer Guide
+    </h1>
+    <p class="mt-3 text-slate-300 max-w-2xl mx-auto text-sm sm:text-base">
+      Select a city on the regional map or swipe the submarket cards below to analyze starter home entry points, HOA fees, and hyper-local video tours.
+    </p>
+  </section>
+
+  <!-- INTERACTIVE MAP & EXPLORER SUITE -->
+  <main class="max-w-7xl mx-auto px-4 pb-16 grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+    
+    <!-- LEFT: REGIONAL VECTOR MAP (7 COLS) -->
+    <div class="lg:col-span-7 bg-brandNavy border border-slate-800 rounded-2xl p-4 sm:p-6 shadow-2xl relative">
+      <div class="flex justify-between items-center mb-4">
+        <h2 class="text-lg font-bold text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-brandGold animate-pulse"></span>
+          Submarket Map Navigator
+        </h2>
+        <span class="text-xs text-slate-400">Tap pin or card to inspect</span>
+      </div>
+
+      <!-- SVG BAY AREA MAP -->
+      <div class="w-full aspect-[4/3] bg-slate-900/80 rounded-xl border border-slate-800/80 overflow-hidden relative flex items-center justify-center">
+        <svg viewBox="0 0 800 650" class="w-full h-full object-contain select-none" xmlns="http://www.w3.org/2000/svg">
+          <!-- WATER BODIES (SAN FRANCISCO & SAN PABLO BAY) -->
+          <path d="M 210,120 C 230,170 210,230 250,260 C 290,290 320,290 340,320 C 370,360 370,430 420,530 C 400,560 360,540 330,510 C 290,460 260,390 240,350 C 210,300 170,260 170,210 Z" fill="#0f243a" stroke="#173554" stroke-width="2"/>
+          <text x="240" y="380" fill="#2d527c" font-size="16" font-weight="bold" transform="rotate(-30 240,380)">SF BAY</text>
+          <text x="260" y="240" fill="#2d527c" font-size="14" font-weight="bold">SAN PABLO BAY</text>
+
+          <!-- COUNTY REGION WATERMARKS -->
+          <text x="440" y="140" fill="#334155" font-size="16" font-weight="bold" letter-spacing="2">SOLANO COUNTY</text>
+          <text x="460" y="310" fill="#334155" font-size="16" font-weight="bold" letter-spacing="2">CONTRA COSTA COUNTY</text>
+          <text x="470" y="490" fill="#334155" font-size="16" font-weight="bold" letter-spacing="2">ALAMEDA COUNTY</text>
+
+          <!-- MAJOR FREEWAYS (I-80, I-680, I-580, I-880) -->
+          <path d="M 280,410 L 320,310 L 330,270 L 375,225 L 490,160" fill="none" stroke="#e5a93c" stroke-width="2.5" stroke-opacity="0.4" stroke-dasharray="4,4"/>
+          <text x="410" y="200" fill="#e5a93c" font-size="10" opacity="0.7">I-80</text>
+
+          <path d="M 375,225 L 430,290 L 460,430 L 480,530" fill="none" stroke="#e5a93c" stroke-width="2.5" stroke-opacity="0.4" stroke-dasharray="4,4"/>
+          <text x="465" y="380" fill="#e5a93c" font-size="10" opacity="0.7">I-680</text>
+
+          <path d="M 320,410 L 420,450 L 590,470" fill="none" stroke="#e5a93c" stroke-width="2.5" stroke-opacity="0.4" stroke-dasharray="4,4"/>
+          <text x="500" y="455" fill="#e5a93c" font-size="10" opacity="0.7">I-580</text>
+
+          <!-- HIGHWAY 4 (TO ANTIOCH & BRENTWOOD) -->
+          <path d="M 330,270 L 430,290 L 580,285 L 630,340" fill="none" stroke="#e5a93c" stroke-width="2.5" stroke-opacity="0.4" stroke-dasharray="4,4"/>
+          <text x="530" y="280" fill="#e5a93c" font-size="10" opacity="0.7">CA-4</text>
+
+          <!-- INTERACTIVE CITY PINS (Click to activate) -->
+          <!-- 1. Fairfield -->
+          <g class="city-pin" id="pin-fairfield" onclick="selectCity('fairfield')">
+            <circle cx="490" cy="160" r="14" fill="#e5a93c" fill-opacity="0.3"/>
+            <circle cx="490" cy="160" r="7" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="508" y="165" fill="#ffffff" font-size="14" font-weight="bold">Fairfield</text>
+          </g>
+
+          <!-- 2. Vallejo -->
+          <g class="city-pin" id="pin-vallejo" onclick="selectCity('vallejo')">
+            <circle cx="375" cy="225" r="14" fill="#e5a93c" fill-opacity="0.3"/>
+            <circle cx="375" cy="225" r="7" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="393" y="230" fill="#ffffff" font-size="14" font-weight="bold">Vallejo</text>
+          </g>
+
+          <!-- 3. Richmond -->
+          <g class="city-pin" id="pin-richmond" onclick="selectCity('richmond')">
+            <circle cx="325" cy="280" r="14" fill="#e5a93c" fill-opacity="0.3"/>
+            <circle cx="325" cy="280" r="7" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="245" y="285" fill="#ffffff" font-size="14" font-weight="bold">Richmond</text>
+          </g>
+
+          <!-- 4. Berkeley -->
+          <g class="city-pin" id="pin-berkeley" onclick="selectCity('berkeley')">
+            <circle cx="335" cy="345" r="14" fill="#e5a93c" fill-opacity="0.3"/>
+            <circle cx="335" cy="345" r="7" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="260" y="350" fill="#ffffff" font-size="14" font-weight="bold">Berkeley</text>
+          </g>
+
+          <!-- 5. Oakland -->
+          <g class="city-pin" id="pin-oakland" onclick="selectCity('oakland')">
+            <circle cx="350" cy="405" r="16" fill="#e5a93c" fill-opacity="0.4"/>
+            <circle cx="350" cy="405" r="8" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="370" y="410" fill="#ffffff" font-size="15" font-weight="bold">Oakland</text>
+          </g>
+
+          <!-- 6. Alameda -->
+          <g class="city-pin" id="pin-alameda" onclick="selectCity('alameda')">
+            <circle cx="330" cy="435" r="14" fill="#e5a93c" fill-opacity="0.3"/>
+            <circle cx="330" cy="435" r="7" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="250" y="445" fill="#ffffff" font-size="14" font-weight="bold">Alameda</text>
+          </g>
+
+          <!-- 7. Antioch -->
+          <g class="city-pin" id="pin-antioch" onclick="selectCity('antioch')">
+            <circle cx="580" cy="285" r="14" fill="#e5a93c" fill-opacity="0.3"/>
+            <circle cx="580" cy="285" r="7" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="595" y="280" fill="#ffffff" font-size="14" font-weight="bold">Antioch</text>
+          </g>
+
+          <!-- 8. Brentwood -->
+          <g class="city-pin" id="pin-brentwood" onclick="selectCity('brentwood')">
+            <circle cx="630" cy="340" r="14" fill="#e5a93c" fill-opacity="0.3"/>
+            <circle cx="630" cy="340" r="7" fill="#e5a93c" stroke="#08101d" stroke-width="2"/>
+            <text x="645" y="345" fill="#ffffff" font-size="14" font-weight="bold">Brentwood</text>
+          </g>
+        </svg>
+      </div>
+
+      <!-- MOBILE SWIPEABLE CAROUSEL (Synced with Map) -->
+      <div class="mt-4">
+        <div class="text-xs uppercase text-slate-400 font-bold mb-2">Select Submarket Card</div>
+        <div id="city-carousel" class="flex gap-2 overflow-x-auto no-scrollbar pb-2">
+          <!-- Rendered via JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: DYNAMIC CITY DOSSIER & VIDEO SHOWCASE (5 COLS) -->
+    <div class="lg:col-span-5 bg-brandNavy border border-slate-800 rounded-2xl p-6 shadow-2xl relative">
+      <div id="preview-container">
+        <!-- HEADER -->
+        <div class="flex justify-between items-start border-b border-slate-800 pb-4">
+          <div>
+            <span id="guide-county" class="text-xs font-bold uppercase tracking-wider text-brandGold">Solano County</span>
+            <h2 id="guide-title" class="text-2xl sm:text-3xl font-black text-white mt-0.5">Fairfield Field Guide</h2>
+          </div>
+          <span id="guide-badge" class="bg-emerald-950/80 border border-emerald-500/30 text-emerald-300 text-xs font-semibold px-2.5 py-1 rounded">
+            Starter Hub
+          </span>
+        </div>
+
+        <!-- KEY DATA GRID (Modeled after Pat Kapowich market stats card style) -->
+        <div class="grid grid-cols-2 gap-3 my-5">
+          <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl">
+            <div class="text-xs text-slate-400">Typical Starter Range</div>
+            <div id="guide-price" class="text-lg font-bold text-brandGold mt-0.5">$450K – $550K</div>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl">
+            <div class="text-xs text-slate-400">Monthly HOA Burden</div>
+            <div id="guide-hoa" class="text-lg font-bold text-white mt-0.5">$0 Monthly</div>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl">
+            <div class="text-xs text-slate-400">Commute Anchor</div>
+            <div id="guide-transit" class="text-sm font-semibold text-slate-200 mt-0.5">I-80 corridor & Amtrak</div>
+          </div>
+          <div class="bg-slate-900/90 border border-slate-800 p-3 rounded-xl">
+            <div class="text-xs text-slate-400">Housing Stock</div>
+            <div id="guide-stock" class="text-sm font-semibold text-slate-200 mt-0.5">1940s–50s Bungalows & Ranches</div>
+          </div>
+        </div>
+
+        <!-- 9:16 VERTICAL VIDEO PLAYER CONTAINER -->
+        <div class="my-5 bg-black rounded-xl border border-slate-800 overflow-hidden relative shadow-inner">
+          <div class="px-3 py-2 bg-slate-900 border-b border-slate-800 flex justify-between items-center text-xs text-slate-300">
+            <span class="font-medium flex items-center gap-1.5">
+              <svg class="w-3.5 h-3.5 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z"/></svg>
+              Watch Video Field Tour
+            </span>
+            <span class="text-slate-400">Vertical HD (0:57)</span>
+          </div>
+          <!-- 9:16 Aspect Ratio Frame -->
+          <div class="w-full max-w-[280px] mx-auto py-3">
+            <div class="aspect-[9/16] w-full rounded-lg overflow-hidden bg-slate-950 border border-slate-800 relative">
+              <iframe id="video-frame" class="w-full h-full" src="https://www.youtube.com/embed/dQw4w9WgXcQ?rel=0" title="Neighborhood Tour" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+
+        <!-- BULLET HIGHLIGHTS -->
+        <div class="space-y-2 mb-6">
+          <div class="text-xs uppercase font-bold text-slate-400 tracking-wider">Submarket Analysis</div>
+          <p id="guide-summary" class="text-sm text-slate-300 leading-relaxed">
+            Central downtown perimeter and Texas Street feature mid-century ranch homes and bungalows on spacious level lots with walkability to dining.
+          </p>
+        </div>
+
+        <!-- CONVERSION CTA BUTTON -->
+        <div class="pt-2">
+          <button onclick="openLeadGate()" class="w-full bg-brandGold hover:bg-yellow-400 text-brandDark font-black text-sm uppercase tracking-wider py-4 rounded-xl shadow-lg transition-transform active:scale-98 flex items-center justify-center gap-2">
+            Unlock Full 2027 City Dossier (PDF & Matrix)
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- LEAD CAPTURE MODAL (Lead Magnet Gate) -->
+  <div id="lead-modal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 hidden">
+    <div class="bg-brandNavy border border-slate-700 w-full max-w-md rounded-2xl p-6 sm:p-8 relative shadow-2xl">
+      <button onclick="closeLeadGate()" class="absolute top-4 right-4 text-slate-400 hover:text-white text-xl">&times;</button>
+      
+      <div class="text-center">
+        <div class="w-12 h-12 bg-brandGold/20 rounded-full flex items-center justify-center mx-auto mb-3">
+          <svg class="w-6 h-6 text-brandGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        </div>
+        <h3 class="text-xl font-bold text-white">Unlock The Complete 2027 Guide</h3>
+        <p class="text-xs text-slate-300 mt-1">Get immediate access to all 8 East Bay city dossiers, full video archives, and the off-market inspection checklist.</p>
+      </div>
+
+      <form id="lead-form" onsubmit="handleLeadSubmit(event)" class="mt-6 space-y-4">
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">First & Last Name</label>
+          <input type="text" required placeholder="Parry Moss" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brandGold">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Primary Email Address</label>
+          <input type="email" required placeholder="you@company.com" class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-brandGold">
+        </div>
+        <div>
+          <label class="block text-xs font-semibold text-slate-300 mb-1">Target Move Timeline</label>
+          <select class="w-full bg-slate-900 border border-slate-700 rounded-lg px-3 py-2.5 text-sm text-white focus:outline-none focus:border-brandGold">
+            <option>Ready to tour within 30 days</option>
+            <option>1 to 3 months</option>
+            <option>3 to 6 months</option>
+            <option>Researching market for 2027</option>
+          </select>
+        </div>
+        <button type="submit" class="w-full bg-brandGold hover:bg-yellow-400 text-brandDark font-black text-sm uppercase tracking-wider py-3.5 rounded-lg shadow-lg transition-transform active:scale-95">
+          Access Complete Field Guide
+        </button>
+      </form>
+      <div class="text-center mt-3 text-[11px] text-slate-500">Zero spam. Direct advisory access with Otis White Jr.</div>
+    </div>
+  </div>
+
+  <!-- JAVASCRIPT DATA ARCHITECTURE -->
+  <script>
+    // JSON DATA SCHEMA FOR ALL 8 SUBMARKETS
+    const EAST_BAY_MARKETS = {
+      fairfield: {
+        title: "Fairfield Field Guide",
+        county: "Solano County",
+        badge: "Starter Hub",
+        price: "$450K – $550K",
+        hoa: "$0 Monthly",
+        transit: "I-80 corridor & Capitol Corridor",
+        stock: "1940s–50s Bungalows & Ranches",
+        youtubeId: "dQw4w9WgXcQ", // Swap with Otis Fairfield YouTube ID
+        summary: "Downtown Fairfield along Texas Street delivers walkable access to family-owned dining, coffee shops, and the seasonal farmers' market with zero HOA fees on spacious level lots."
+      },
+      vallejo: {
+        title: "Vallejo Waterfront Guide",
+        county: "Solano County",
+        badge: "Ferry Gateway",
+        price: "$420K – $530K",
+        hoa: "$0 – $150/mo",
+        transit: "SF Bay Ferry Terminal & I-80",
+        stock: "Victorian, Craftsman & Mid-Century",
+        youtubeId: "dQw4w9WgXcQ",
+        summary: "Historic waterfront community offering direct 60-minute passenger ferry access to downtown SF Ferry Building and some of the region's lowest price-per-square-foot entry points."
+      },
+      richmond: {
+        title: "Richmond & Marina Guide",
+        county: "Contra Costa County",
+        badge: "Transit Value",
+        price: "$520K – $650K",
+        hoa: "$0 (Single Family)",
+        transit: "Richmond BART & SF Bay Ferry",
+        stock: "Post-War Cottages & Waterfront Condos",
+        youtubeId: "dQw4w9WgXcQ",
+        summary: "Unmatched dual-transit hub offering both terminus BART line access and ferry services to San Francisco, anchored by the Point Richmond historic district and Marina Bay trails."
+      },
+      berkeley: {
+        title: "Berkeley Architectural Guide",
+        county: "Alameda County",
+        badge: "Prime Academic",
+        price: "$850K – $1.4M+",
+        hoa: "Varies ($0 SFH)",
+        transit: "BART (3 Stations) & AC Transit",
+        stock: "Brown Shingle Craftsman & Period Revivals",
+        youtubeId: "dQw4w9WgXcQ",
+        summary: "World-class cultural and culinary enclave featuring high architectural value, robust long-term equity stability, and mature transit connections into Oakland and downtown SF."
+      },
+      oakland: {
+        title: "Oakland Urban & Metro Guide",
+        county: "Alameda County",
+        badge: "Urban Center",
+        price: "$550K – $950K+",
+        hoa: "Neighborhood Dependent",
+        transit: "Major BART Hub (12th/19th St) & Ferry",
+        stock: "Brooklyn Basin, Grand Lake & Mid-Century",
+        youtubeId: "dQw4w9WgXcQ",
+        summary: "Dynamic cultural core with high contrast submarkets ranging from newly delivered waterfront developments at Brooklyn Basin to classic Craftsman and Spanish Mediterranean homes."
+      },
+      alameda: {
+        title: "Alameda Island Guide",
+        county: "Alameda County",
+        badge: "Island Enclave",
+        price: "$850K – $1.3M+",
+        hoa: "Zero on detached homes",
+        transit: "Ferry terminals (Main St & Seaplane Lagoon)",
+        stock: "Queen Anne Victorians & Waterfront",
+        youtubeId: "dQw4w9WgXcQ",
+        summary: "Self-contained island living defined by tree-lined residential streets, top-tier municipal public schools, distinct 25 mph speed regulations, and scenic water recreation."
+      },
+      antioch: {
+        title: "Antioch Delta Gateway",
+        county: "Contra Costa County",
+        badge: "Maximum Square Feet",
+        price: "$500K – $630K",
+        hoa: "Minimal to Zero",
+        transit: "eBART Extension & CA-4",
+        stock: "1980s–2000s 2-Story Subdivisions",
+        youtubeId: "dQw4w9WgXcQ",
+        summary: "High utility family homes offering large square footage, multi-car garages, and direct connection into central Contra Costa via Highway 4 and the eBART transfer corridor."
+      },
+      brentwood: {
+        title: "Brentwood Agricultural Valley",
+        county: "Contra Costa County",
+        badge: "Master-Planned",
+        price: "$650K – $825K",
+        hoa: "$50 – $150/mo",
+        transit: "Highway 4 bypass & Vasco Rd",
+        stock: "Modern Master-Planned Communities",
+        youtubeId: "dQw4w9WgXcQ",
+        summary: "Established suburban enclave known for top-rated school clusters, extensive park systems, agricultural open spaces, and modern turnkey single-family housing developments."
+      }
+    };
+
+    let activeSlug = 'fairfield';
+
+    // RENDER MOBILE CAROUSEL BUTTONS
+    function initCarousel() {
+      const container = document.getElementById('city-carousel');
+      container.innerHTML = Object.keys(EAST_BAY_MARKETS).map(slug => {
+        const city = EAST_BAY_MARKETS[slug];
+        const isActive = slug === activeSlug;
+        return `
+          <button onclick="selectCity('${slug}')" id="btn-${slug}" 
+            class="px-3.5 py-2 rounded-lg text-xs font-bold whitespace-nowrap border transition-all ${
+              isActive 
+              ? 'bg-brandGold text-brandDark border-brandGold shadow-md' 
+              : 'bg-slate-900 text-slate-300 border-slate-700 hover:border-slate-500'
+            }">
+            ${slug.charAt(0).toUpperCase() + slug.slice(1)}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // UPDATE UI ON CITY SELECTION
+    function selectCity(slug) {
+      activeSlug = slug;
+      const data = EAST_BAY_MARKETS[slug];
+      if (!data) return;
+
+      // Update text fields
+      document.getElementById('guide-county').innerText = data.county;
+      document.getElementById('guide-title').innerText = data.title;
+      document.getElementById('guide-badge').innerText = data.badge;
+      document.getElementById('guide-price').innerText = data.price;
+      document.getElementById('guide-hoa').innerText = data.hoa;
+      document.getElementById('guide-transit').innerText = data.transit;
+      document.getElementById('guide-stock').innerText = data.stock;
+      document.getElementById('guide-summary').innerText = data.summary;
+      
+      // Update Video
+      document.getElementById('video-frame').src = `https://www.youtube.com/embed/${data.youtubeId}?rel=0`;
+
+      // Update Map Active States
+      document.querySelectorAll('.city-pin').forEach(el => el.classList.remove('active'));
+      const pin = document.getElementById(`pin-${slug}`);
+      if (pin) pin.classList.add('active');
+
+      // Update Carousel Buttons
+      initCarousel();
+    }
+
+    // MODAL LEAD GATE HANDLERS
+    function openLeadGate() {
+      document.getElementById('lead-modal').classList.remove('hidden');
+    }
+
+    function closeLeadGate() {
+      document.getElementById('lead-modal').classList.add('hidden');
+    }
+
+    function handleLeadSubmit(e) {
+      e.preventDefault();
+      // Dispatch webhook payload to Google Sheets / Zapier
+      alert("Verification successful. Unlocking full dossier and dispatching guide copy to your inbox.");
+      closeLeadGate();
+      // Optional: window.location.href = `/${activeSlug}/`;
+    }
+
+    // INIT ON LOAD
+    document.addEventListener('DOMContentLoaded', () => {
+      initCarousel();
+      selectCity('fairfield');
+    });
+  </script>
+</body>
+</html>
